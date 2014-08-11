@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/file_picker"
+        android:onClick="openFilePicker"/>
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_below="@+id/myText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="400px"
+        android:maxHeight="600px"/>
+    <TextView
+        android:id="@+id/label"
+        android:text="@string/decoded_label"
+        android:layout_below="@id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:textSize="8pt" />
+    <TextView
+        android:id="@+id/myText"
+        android:layout_below="@+id/label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textStyle="italic"
+        android:maxHeight="90dp"
+        android:autoLink="web"/>
+
+
+</RelativeLayout>
