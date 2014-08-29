@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.util.TimingLogger;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -142,15 +143,22 @@ public class MainActivity extends Activity {
         int[] pixels = new int[width * height];
         bmp.getPixels(pixels, 0 , width, 0, 0, width, height);
 
+        TimingLogger timingLogger = new TimingLogger("TopicLogTag", "Decode");
+
+
         RGBLuminanceSource src = new RGBLuminanceSource(width, height, pixels);
 
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(src));
         Reader reader = new QRCodeReader();
 
-        Log.d(LOG_TAG, "prima del try");
+        //Log.d(LOG_TAG, "prima del try");
 
         try{
             Result result = reader.decode(bitmap);
+
+            timingLogger.addSplit("Dopo il decode");
+            timingLogger.dumpToLog();
+
             Global.text = result.getText();
 
             message.setText(Global.text);
